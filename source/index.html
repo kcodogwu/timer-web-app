@@ -5,12 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="style/index.css" />
 </head>
 <body>
-  <div id="clockdiv">
-    Hours: <span class="hours"></span><br>
-    Minutes: <span class="minutes"></span><br>
-    Seconds: <span class="seconds"></span>
+  <h1>Countdown Clock</h1>
+  <div id="message">
+    Type in the amount of time you want to count down from,
+    then click Start. Supply 0 to positive whole-number values.
+    For the Minutes &amp; the Seconds fields, the numbers
+    cannot be greater than 59.
   </div>
+  <div id="invalid">
+    WRONG INPUT!
+  </div>
+  <div id="clockdiv">
+    <div>
+      <input id="hrs" type="text" value="00" />
+      <div class="smalltext">Hours</div>
+    </div>
+    <div>
+      <input id="mins" type="text" value="00" />
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+      <input id="secs" type="text" value="00" />
+      <div class="smalltext">Seconds</div>
+    </div>
+  </div>
+  <div id="controls">
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="stop">Stop</button>
+  </div>
+  <script src="scripts/index.js"></script>
 </body>
 </html>
