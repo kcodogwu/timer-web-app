@@ -89,7 +89,7 @@ window.onload = function onload() {
     ;
   };
 
-  var startListener = function startListener() {
+  var startHandler = function startHandler() {
     if (validate()) {
       invalid.style.display = 'none';
       invalid.style.visibility = 'hidden';
@@ -108,7 +108,7 @@ window.onload = function onload() {
     }
   };
 
-  var pauseListener = function pauseListener() {
+  var pauseHandler = function pauseHandler() {
     pFlag = !pFlag;
 
     if (pFlag) {
@@ -120,13 +120,35 @@ window.onload = function onload() {
     }
   };
 
-  var stopListener = function stopListener() {
+  var stopHandler = function stopHandler() {
     reset();
+  };
+
+  var inputFocusHandler = function inputFocusHandler(e) {
+    var el = e.target;
+    
+    el.value = '';
+  };
+
+  var inputBlurHandler = function inputBlurHandler(e) {
+    var el = e.target;
+    
+    if (el.value === '' || el.value === '0')
+      el.value = '00'
+    ; else
+      el.value = ('0' + el.value).slice(-2)
+    ;
   };
 
   pause.disabled = true;
   stop.disabled = true;
-  addEvent(start, 'click', startListener);
-  addEvent(pause, 'click', pauseListener);
-  addEvent(stop, 'click', stopListener);
+  addEvent(start, 'click', startHandler);
+  addEvent(pause, 'click', pauseHandler);
+  addEvent(stop, 'click', stopHandler);
+  addEvent(hrs, 'focus', inputFocusHandler);
+  addEvent(hrs, 'blur', inputBlurHandler);
+  addEvent(mins, 'focus', inputFocusHandler);
+  addEvent(mins, 'blur', inputBlurHandler);
+  addEvent(secs, 'focus', inputFocusHandler);
+  addEvent(secs, 'blur', inputBlurHandler);
 };
